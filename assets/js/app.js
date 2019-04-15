@@ -39,7 +39,7 @@
 //     }
 // })
 
-var topics =['cat','dog','pig','turtle','fish'];
+var topics =['cat','dog','pig','turtle','fish', 'pangolin'];
 
 function printBtn() {
     for (var i = 0; i < topics.length; i++) {
@@ -47,20 +47,13 @@ function printBtn() {
        var t = document.createTextNode(topics[i]);
        btn.appendChild(t);
        document.body.appendChild(btn);
+       btn.setAttribute("id", "gifBtn");
 
-       var b = document.querySelector("button");
-        b.setAttribute("id", "gifBtn");
-        btn.appendChild(b);
     }
 }
 
 printBtn();
 
-// var b = document.querySelector("button");
-// b.setAttribute("id", "gifBtn");
-// btn.appendChild(b);
 
-// jQuery document.on("ready")
-// $(function() {
-  
-// });
+
+
