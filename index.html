@@ -14,12 +14,29 @@
 </head>
 
 <body>
-  <h2>WORK IN PROGRESS</h2>
-<input type="text" id="inputGif"> <input type="submit" id=subBtn>
+  <div class="jumbotron">
+  <h2 class="display-4">GifTastic Project!!</h2>
+</div>
 
-  <div id="container"></div>
+<div class="card" id="gif-input">
+  <div class="card-header">Make your own button!</div>
+  <div class="card-body">
+<input type="text" id="inputGif"> <input type="submit" id=subBtn class="btn btn-dark">
+</div>
+</div>
 
-  <div id="gifs-here"></div>
+<div class="card" id="gif-btn">
+  <div class="card-body">
+      <div id="container"></div>
+  </div>
+</div>
+
+<div class="card" id="gif-output" style="visibility: hidden">
+    <div class="card-body">
+        <div id="gifs-here"></div>
+    </div>
+  </div>
+
 
   <!-- app.js -->
   <script src="assets/js/app.js"></script>

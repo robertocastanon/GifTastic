@@ -19,6 +19,8 @@ function printBtn() {
        element.append(btn);
        //gives each button the same dataset and a topic corresponding to their names
        btn.setAttribute('data-gif', topics[i]);
+       btn.setAttribute("class", "btn btn-dark")
+       btn.style.margin="2px";
 
        
     }
@@ -34,6 +36,9 @@ function printBtn() {
             inputBtn.append(inputText);
             element.append(inputBtn);
             inputBtn.setAttribute('data-gif', inputElement);
+            inputBtn.setAttribute("class", "btn btn-dark")
+            inputBtn.style.margin="2px";
+
             
         
         });
@@ -48,6 +53,7 @@ printBtn();
 
 //click function for the created buttons
 document.querySelector('#container').addEventListener('click', function(event) {
+    document.getElementById('gif-output').style.visibility='visible';
 
     if (event.target.tagName == 'BUTTON') {
         //gif targets 'data-gif'
