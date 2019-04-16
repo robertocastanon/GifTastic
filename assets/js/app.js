@@ -3,8 +3,22 @@
 document.addEventListener("DOMContentLoaded", () => {
 
 
+var topics = ['cat','dog','pig','turtle','fish','pangolin'];
 
-var topics =['cat','dog','pig','turtle','fish','pangolin'];
+document.querySelector("#subBtn").addEventListener('click', function() {
+    inputElement = document.querySelector('#inputGif').value.trim();
+
+    topics.push(inputElement);
+    console.log(topics)
+
+    var inputBtn = document.createElement('button')
+    var inputText = document.createTextNode(inputElement);
+    inputBtn.append(inputText);
+    document.querySelector("#container").append(inputBtn);
+    inputBtn.setAttribute('data-gif', inputElement);
+    
+
+});
 
 function printBtn() {
     //var for the div container
