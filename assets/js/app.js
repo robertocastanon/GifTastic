@@ -5,20 +5,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 var topics = ['cat','dog','pig','turtle','fish','pangolin'];
 
-document.querySelector("#subBtn").addEventListener('click', function() {
-    inputElement = document.querySelector('#inputGif').value.trim();
+// document.querySelector("#subBtn").addEventListener('click', function() {
+//     inputElement = document.querySelector('#inputGif').value.trim();
 
-    topics.push(inputElement);
-    console.log(topics)
+//     topics.push(inputElement);
+//     console.log(topics)
 
-    var inputBtn = document.createElement('button')
-    var inputText = document.createTextNode(inputElement);
-    inputBtn.append(inputText);
-    document.querySelector("#container").append(inputBtn);
-    inputBtn.setAttribute('data-gif', inputElement);
+//     var inputBtn = document.createElement('button')
+//     var inputText = document.createTextNode(inputElement);
+//     inputBtn.append(inputText);
+//     document.querySelector("#container").append(inputBtn);
+//     inputBtn.setAttribute('data-gif', inputElement);
     
 
-});
+// });
 
 function printBtn() {
     //var for the div container
@@ -33,17 +33,32 @@ function printBtn() {
        element.append(btn);
        //gives each button the same dataset and a topic corresponding to their names
        btn.setAttribute('data-gif', topics[i]);
+
        
     }
-    //adds a div inside of the container, this will be where the gifs appear
-    var output = document.createElement('div');
-    element.append(output);
-    //givs the div an id
-    output.setAttribute('id', 'gifs-here');
+           //click function for submit button
+           document.querySelector("#subBtn").addEventListener('click', function() {
+            inputElement = document.querySelector('#inputGif').value.trim();
+        
+            topics.push(inputElement);
+            console.log(topics)
+        
+            var inputBtn = document.createElement('button')
+            var inputText = document.createTextNode(inputElement);
+            inputBtn.append(inputText);
+            element.append(inputBtn);
+            inputBtn.setAttribute('data-gif', inputElement);
+            
+        
+        });
+
+
 }
 
 //calls function in global
 printBtn();
+
+
 
 
 document.querySelector('#container').addEventListener('click', function(event) {
