@@ -5,20 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 var topics = ['cat','dog','pig','turtle','fish','pangolin'];
 
-// document.querySelector("#subBtn").addEventListener('click', function() {
-//     inputElement = document.querySelector('#inputGif').value.trim();
-
-//     topics.push(inputElement);
-//     console.log(topics)
-
-//     var inputBtn = document.createElement('button')
-//     var inputText = document.createTextNode(inputElement);
-//     inputBtn.append(inputText);
-//     document.querySelector("#container").append(inputBtn);
-//     inputBtn.setAttribute('data-gif', inputElement);
-    
-
-// });
 
 function printBtn() {
     //var for the div container
@@ -39,10 +25,10 @@ function printBtn() {
            //click function for submit button
            document.querySelector("#subBtn").addEventListener('click', function() {
             inputElement = document.querySelector('#inputGif').value.trim();
-        
+            //sendings user input into array topics
             topics.push(inputElement);
             console.log(topics)
-        
+            //same proccess as making a button above
             var inputBtn = document.createElement('button')
             var inputText = document.createTextNode(inputElement);
             inputBtn.append(inputText);
@@ -60,11 +46,11 @@ printBtn();
 
 
 
-
+//click function for the created buttons
 document.querySelector('#container').addEventListener('click', function(event) {
 
     if (event.target.tagName == 'BUTTON') {
-
+        //gif targets 'data-gif'
         var gif = event.target.dataset.gif;
 
         var queryURL = `https://api.giphy.com/v1/gifs/search?q="${gif}&api_key=C1f3HAJEWDoZZ7SkLq487LAiHvdOMfgP&limit=10`;
@@ -77,13 +63,13 @@ document.querySelector('#container').addEventListener('click', function(event) {
         .then(function(response) {
             console.log(queryURL);
             console.log(response);
-
+            //sorts through json to get basic gif data
             var results = response.data;
 
             for (let item of results) {
-
+                //var to contain gif inside div
                 var gifDiv = document.createElement('div');
-
+                //var for the rating, create p tag
                 var p = document.createElement('p')
                 p.innerText = `Rating: ${item.rating}`;
 
@@ -93,9 +79,9 @@ document.querySelector('#container').addEventListener('click', function(event) {
                 gifImage.setAttribute('data-still', item.images.fixed_height_still.url);
                 gifImage.setAttribute('data-animate', item.images.fixed_height.url);
                 gifImage.setAttribute('data-state', 'still');
-
-                gifDiv.appendChild(p);
                 gifDiv.appendChild(gifImage);
+                gifDiv.appendChild(p);
+                
 
                 let gifContainer = document.querySelector('#gifs-here');
                 gifContainer.prepend(gifDiv);
