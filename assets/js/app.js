@@ -7,10 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
 var topics =['cat','dog','pig','turtle','fish','pangolin'];
 
 function printBtn() {
-    //adds container div, and gives it an id name
+    //var for the div container
     var element = document.querySelector("#container");
-    // document.body.append(element);
-    // element.setAttribute('id', 'container"');
     //using a for loop, creates a button for each value in the 'topics' array
     for (var i = 0; i < topics.length; i++) {
        var btn = document.createElement('button');
@@ -52,7 +50,7 @@ document.querySelector('#container').addEventListener('click', function(event) {
 
             var results = response.data;
 
-            for (let itme of results) {
+            for (let item of results) {
 
                 var gifDiv = document.createElement('div');
 
