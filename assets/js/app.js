@@ -19,6 +19,7 @@ function printBtn() {
        element.append(btn);
        //gives each button the same dataset and a topic corresponding to their names
        btn.setAttribute('data-gif', topics[i]);
+       
     }
     //adds a div inside of the container, this will be where the gifs appear
     var output = document.createElement('div');
@@ -59,7 +60,7 @@ document.querySelector('#container').addEventListener('click', function(event) {
 
                 var gifImage = document.createElement('img');
 
-                gifImage.setAttribute('src', item.images.fixed_height.url);
+                gifImage.setAttribute('src', item.images.fixed_height_still.url);
 
                 gifDiv.appendChild(p);
                 gifDiv.appendChild(gifImage);
