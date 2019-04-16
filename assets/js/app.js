@@ -52,13 +52,13 @@ document.querySelector('#container').addEventListener('click', function(event) {
     if (event.target.tagName == 'BUTTON') {
         //gif targets 'data-gif'
         var gif = event.target.dataset.gif;
-
+        //variable for the giphy search api
         var queryURL = `https://api.giphy.com/v1/gifs/search?q="${gif}&api_key=C1f3HAJEWDoZZ7SkLq487LAiHvdOMfgP&limit=10`;
-
+        //calls the api
         fetch(queryURL, {
             method: 'GET'
         })
-
+        //returns the json
         .then(function(response) { return response.json() })
         .then(function(response) {
             console.log(queryURL);
@@ -72,30 +72,38 @@ document.querySelector('#container').addEventListener('click', function(event) {
                 //var for the rating, create p tag
                 var p = document.createElement('p')
                 p.innerText = `Rating: ${item.rating}`;
-
+                //var that creates an img tag
                 var gifImage = document.createElement('img');
-
+                //sets defualt src to a static gif
                 gifImage.setAttribute('src', item.images.fixed_height_still.url);
+                //gives that static gif a dataset
                 gifImage.setAttribute('data-still', item.images.fixed_height_still.url);
+                //gives the gif the src and dataset to be animated 
                 gifImage.setAttribute('data-animate', item.images.fixed_height.url);
+                //sets the data state, will be used in if else statement
                 gifImage.setAttribute('data-state', 'still');
+                //append gifImage inside of the gifDiv
                 gifDiv.appendChild(gifImage);
+                //append the rating inside the gifDiv below the gifImage
                 gifDiv.appendChild(p);
                 
-
+                //variable for the gifs-here container
                 let gifContainer = document.querySelector('#gifs-here');
+                //the gifdiv is prepended to the gifcontainer
                 gifContainer.prepend(gifDiv);
-                //on click for images
+                //on click for images created
                 gifImage.addEventListener('click', function(event) {
                     if (event.target.tagName == 'img'.toUpperCase()) {
                         let currentImg = event.target
+                        //var for the state, in our case when the gifs appear they are still
                         var state = currentImg.dataset.state
-
+                        //if you click on an img and its state is still, then animate it
                         if (state === 'still') {
                             currentImg.setAttribute('src', currentImg.dataset.animate)
                             currentImg.setAttribute('data-state', 'animate')
 
                         } 
+                        //if you click it and the state is not still then make it still
                         else {
                             currentImg.setAttribute('src', currentImg.dataset.still)
                             currentImg.setAttribute('data-set', 'still')
