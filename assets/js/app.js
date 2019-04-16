@@ -61,16 +61,43 @@ document.querySelector('#container').addEventListener('click', function(event) {
                 var gifImage = document.createElement('img');
 
                 gifImage.setAttribute('src', item.images.fixed_height_still.url);
+                gifImage.setAttribute('data-still', item.images.fixed_height_still.url);
+                gifImage.setAttribute('data-animate', item.images.fixed_height.url);
+                gifImage.setAttribute('data-state', 'still');
 
                 gifDiv.appendChild(p);
                 gifDiv.appendChild(gifImage);
 
                 let gifContainer = document.querySelector('#gifs-here');
                 gifContainer.prepend(gifDiv);
+                //on click for images
+                gifImage.addEventListener('click', function(event) {
+                    if (event.target.tagName == 'img'.toUpperCase()) {
+                        let currentImg = event.target
+                        var state = currentImg.dataset.state
+
+                        if (state === 'still') {
+                            currentImg.setAttribute('src', currentImg.dataset.animate)
+                            currentImg.setAttribute('data-state', 'animate')
+
+                        } 
+                        else {
+                            currentImg.setAttribute('src', currentImg.dataset.still)
+                            currentImg.setAttribute('data-set', 'still')
+                        }
+
+                    }
+                
+                })
+
+            
+
             }
         });
     }
 });
+
+
 
 
 
